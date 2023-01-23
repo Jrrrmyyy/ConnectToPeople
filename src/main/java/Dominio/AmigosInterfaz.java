@@ -5,7 +5,7 @@
  */
 package Dominio;
 
-import Interfaces.*;
+
 import Dominio.Amigos;
 import java.util.List;
 
