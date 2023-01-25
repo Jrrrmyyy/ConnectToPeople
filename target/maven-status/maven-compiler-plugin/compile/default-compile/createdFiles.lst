@@ -1,6 +1,6 @@
-Dominio\Usuario.class
 Dominio\Amigos.class
-Dominio\Perfil.class
-com\ceep\connecttopeople\resources\JavaEE8Resource.class
 com\ceep\connecttopeople\JAXRSConfiguration.class
 WEB\Registro.class
+Dominio\Usuario.class
+Dominio\Perfil.class
+com\ceep\connecttopeople\resources\JavaEE8Resource.class
