@@ -5,7 +5,7 @@
     <artifactId>ConnectToPeople</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>ConnectToPeople-1.0-SNAPSHOT</name>
+    <name>CTP</name>
     
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>

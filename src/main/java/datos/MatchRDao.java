@@ -9,6 +9,6 @@ package datos;
  *
  * @author Alumno Mañana
  */
-public class Archivos {
+public interface MatchRDao {
     
 }
