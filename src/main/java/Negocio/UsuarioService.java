@@ -26,4 +26,10 @@ public interface UsuarioService {
     
     public void eliminarUsuario(Usuario usuario);
     
+    public boolean comprobar(Usuario usuario);
+    
+    public List<Usuario> buscarUsuario(Usuario usuario);
+    
+    public String cifrarMD5(String input) throws Exception;
+    
 }

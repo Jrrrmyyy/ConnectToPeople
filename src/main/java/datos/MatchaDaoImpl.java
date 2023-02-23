@@ -38,7 +38,7 @@ public class MatchaDaoImpl implements MatchaDao {
     }
 
     @Override
-    public void upadte(Matcha matcha) {
+    public void update(Matcha matcha) {
         em.merge(matcha);
     }
 

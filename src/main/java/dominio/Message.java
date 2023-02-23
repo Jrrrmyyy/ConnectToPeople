@@ -35,15 +35,16 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Message.findByFecha", query = "SELECT m FROM Message m WHERE m.fecha = :fecha")})
 public class Message implements Serializable {
 
+    @Size(max = 400)
+    @Column(name = "message")
+    private String message;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idmessage")
     private Integer idmessage;
-    @Size(max = 400)
-    @Column(name = "message")
-    private String message;
     @Column(name = "fecha")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecha;
@@ -75,13 +76,6 @@ public class Message implements Serializable {
         this.idmessage = idmessage;
     }
 
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
 
     public Date getFecha() {
         return fecha;
@@ -146,6 +140,14 @@ public class Message implements Serializable {
     @Override
     public String toString() {
         return "dominio.Message[ idmessage=" + idmessage + " ]";
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
     
 }

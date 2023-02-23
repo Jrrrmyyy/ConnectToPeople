@@ -31,15 +31,16 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Media.findByFoto", query = "SELECT m FROM Media m WHERE m.foto = :foto")})
 public class Media implements Serializable {
 
+    @Size(max = 195)
+    @Column(name = "foto")
+    private String foto;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idmedia")
     private Integer idmedia;
-    @Size(max = 195)
-    @Column(name = "foto")
-    private String foto;
     @JoinColumn(name = "usuario_idusuario", referencedColumnName = "idusuario")
     @ManyToOne(optional = false)
     private Usuario usuarioIdusuario;
@@ -59,13 +60,6 @@ public class Media implements Serializable {
         this.idmedia = idmedia;
     }
 
-    public String getFoto() {
-        return foto;
-    }
-
-    public void setFoto(String foto) {
-        this.foto = foto;
-    }
 
     public Usuario getUsuarioIdusuario() {
         return usuarioIdusuario;
@@ -98,6 +92,14 @@ public class Media implements Serializable {
     @Override
     public String toString() {
         return "dominio.Media[ idmedia=" + idmedia + " ]";
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
     
 }

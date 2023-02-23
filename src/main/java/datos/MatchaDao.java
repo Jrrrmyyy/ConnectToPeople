@@ -20,7 +20,7 @@ public interface MatchaDao {
     
     public void insertar(Matcha matcha);
     
-    public void upadte(Matcha matcha);
+    public void update(Matcha matcha);
     
     public void delete(Matcha matcha);
     

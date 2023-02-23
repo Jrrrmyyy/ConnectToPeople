@@ -41,19 +41,11 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Usuario.findByCiudad", query = "SELECT u FROM Usuario u WHERE u.ciudad = :ciudad")})
 public class Usuario implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "idusuario")
-    private Integer idusuario;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
+    @Size(max = 45)
     @Column(name = "nick")
     private String nick;
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Size(min = 1, max = 15)
     @Column(name = "contrase\u00f1a")
     private String contraseña;
@@ -62,33 +54,28 @@ public class Usuario implements Serializable {
     @Size(min = 1, max = 65)
     @Column(name = "correo")
     private String correo;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 15)
+    @Size(max = 15)
     @Column(name = "genero")
     private String genero;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "edad")
-    private int edad;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "longitud")
-    private double longitud;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "latitud")
-    private double latitud;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 155)
+    @Size(max = 155)
     @Column(name = "biografia")
     private String biografia;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
+    @Size(max = 45)
     @Column(name = "ciudad")
     private String ciudad;
+    @Column(name = "edad")
+    private Integer edad;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "longitud")
+    private Double longitud;
+    @Column(name = "latitud")
+    private Double latitud;
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "idusuario")
+    private Integer idusuario;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioIdusuario")
     private List<Matchr> matchrList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioIdusuario1")
@@ -126,6 +113,10 @@ public class Usuario implements Serializable {
         this.ciudad = ciudad;
     }
 
+    public Usuario(String correo, String password) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public Integer getIdusuario() {
         return idusuario;
     }
@@ -134,77 +125,6 @@ public class Usuario implements Serializable {
         this.idusuario = idusuario;
     }
 
-    public String getNick() {
-        return nick;
-    }
-
-    public void setNick(String nick) {
-        this.nick = nick;
-    }
-
-    public String getContraseña() {
-        return contraseña;
-    }
-
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
-    }
-
-    public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
-    public String getGenero() {
-        return genero;
-    }
-
-    public void setGenero(String genero) {
-        this.genero = genero;
-    }
-
-    public int getEdad() {
-        return edad;
-    }
-
-    public void setEdad(int edad) {
-        this.edad = edad;
-    }
-
-    public double getLongitud() {
-        return longitud;
-    }
-
-    public void setLongitud(double longitud) {
-        this.longitud = longitud;
-    }
-
-    public double getLatitud() {
-        return latitud;
-    }
-
-    public void setLatitud(double latitud) {
-        this.latitud = latitud;
-    }
-
-    public String getBiografia() {
-        return biografia;
-    }
-
-    public void setBiografia(String biografia) {
-        this.biografia = biografia;
-    }
-
-    public String getCiudad() {
-        return ciudad;
-    }
-
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
-    }
 
     public List<Matchr> getMatchrList() {
         return matchrList;
@@ -293,6 +213,79 @@ public class Usuario implements Serializable {
     @Override
     public String toString() {
         return "dominio.Usuario[ idusuario=" + idusuario + " ]";
+    }
+
+
+    public Integer getEdad() {
+        return edad;
+    }
+
+    public void setEdad(Integer edad) {
+        this.edad = edad;
+    }
+
+    public Double getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(Double longitud) {
+        this.longitud = longitud;
+    }
+
+    public Double getLatitud() {
+        return latitud;
+    }
+
+    public void setLatitud(Double latitud) {
+        this.latitud = latitud;
+    }
+
+    public String getNick() {
+        return nick;
+    }
+
+    public void setNick(String nick) {
+        this.nick = nick;
+    }
+
+    public String getContraseña() {
+        return contraseña;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    public String getBiografia() {
+        return biografia;
+    }
+
+    public void setBiografia(String biografia) {
+        this.biografia = biografia;
+    }
+
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
     }
     
 }

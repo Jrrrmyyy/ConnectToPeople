@@ -5,10 +5,18 @@
  */
 package Negocio;
 
+import dominio.Matcha;
+import java.util.List;
+
 /**
  *
  * @author Alumno Mañana
  */
-public class MatchaService {
+public interface MatchaService {
     
+    public List<Matcha> findAllMatcha();
+    public Matcha findMatchaById(Matcha matcha);
+    public void insertar(Matcha matcha);
+    public void updateMatcha(Matcha matcha);
+    public void deleteMatcha(Matcha matcha);
 }

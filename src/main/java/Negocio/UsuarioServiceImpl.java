@@ -7,6 +7,8 @@ package Negocio;
 
 import datos.UsuarioDao;
 import dominio.Usuario;
+import java.math.BigInteger;
+import java.security.MessageDigest;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -51,6 +53,45 @@ public class UsuarioServiceImpl implements UsuarioService{
     @Override
     public void eliminarUsuario(Usuario usuario) {
         usuarioDao.delete(usuario);
+    }
+
+    @Override
+    public boolean comprobar(Usuario usuario) {
+        boolean result = false;
+        int num = listarUsuarios().size();
+        for (int i = 0; i < num;i++){
+            if(this.listarUsuarios().get(i).getCorreo().equalsIgnoreCase(usuario.getCorreo())&&listarUsuarios().get(i).getContraseña().equalsIgnoreCase(usuario.getContraseña())){
+                return result = true;
+            }
+        }
+        System.out.println("RESULTADO:"+result);
+        return result;
+    }
+
+    @Override
+    public List<Usuario> buscarUsuario(Usuario usuario) {
+        List<Usuario> listadoUsuario=null;
+        for (int i=0;i<listarUsuarios().size();i++){
+            if(listarUsuarios().get(i).getCorreo().toLowerCase().contains(usuario.getCorreo().toLowerCase())){
+                listadoUsuario.add(listarUsuarios().get(i));
+            }
+        }
+        return listadoUsuario;
+    }
+
+    @Override
+    public String cifrarMD5(String input) throws Exception {
+        String md5 = null;
+        if (null == input)
+            return null;
+        
+        MessageDigest digest = MessageDigest.getInstance("MD5");
+        
+        digest.update(input.getBytes(), 0, input.length());
+        
+        md5 = new BigInteger(1, digest.digest()).toString(16);
+        
+        return md5;
     }
     
 }
